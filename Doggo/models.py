@@ -5,11 +5,19 @@ from django.db import models
 class Partia(models.Model):
     nazwa = models.CharField(max_length=40)
 
+    __tablename__ = 'Partia'
+
+    def __str__(self):
+        return self.nazwa
+
 
 class Wybory(models.Model):
     typ = models.CharField(max_length=10)
     maxKandydatow = models.IntegerField
     czasWyboru = models.IntegerField
+
+    def __str__(self):
+        return "%s %d %d" % (self.typ, self.maxKandydatow, self.czasWyboru)
 
 
 class Kandydat(models.Model):
@@ -19,9 +27,15 @@ class Kandydat(models.Model):
     partia = models.ForeignKey(Partia, on_delete=models.CASCADE)
     wybory = models.ForeignKey(Wybory, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return "%s %s %d" % (self.imie, self.nazwisko, self.licznik)
+
 
 class Glosujacy(models.Model):
     pesel = models.PositiveIntegerField()
+
+    def __str__(self):
+        return self.pesel
 
 
 class Glos(models.Model):

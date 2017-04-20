@@ -16,8 +16,10 @@ class Wybory(models.Model):
     maxKandydatow = models.IntegerField
     czasWyboru = models.IntegerField
 
-    def __str__(self):
-        return "%s %d %d" % (self.typ, self.maxKandydatow, self.czasWyboru)
+    __tablename__ = 'Wybory'
+
+    #def __str__(self):
+     #   return "%s %d %d" % (self.typ, self.maxKandydatow, self.czasWyboru)
 
 
 class Kandydat(models.Model):

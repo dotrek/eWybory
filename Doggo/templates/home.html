@@ -2,4 +2,13 @@
 
 {% block content %}
     TO JEST HOME.html
+{% if latest_question_list %}
+<ul>
+    {% for Kandydat in latest_question_list %}
+    <li><a href="/Doggo/{{ Kandydat.imie }}/">{{ Kandydat.nazwisko }}</a></li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No polls are available.</p>
+{% endif %}
 {% endblock %}

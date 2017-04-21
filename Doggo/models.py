@@ -13,13 +13,13 @@ class Partia(models.Model):
 
 class Wybory(models.Model):
     typ = models.CharField(max_length=10)
-    maxKandydatow = models.IntegerField
-    czasWyboru = models.IntegerField
+    maxKandydatow = models.IntegerField(default=0)
+    czasWyboru = models.IntegerField(default=0)
 
     __tablename__ = 'Wybory'
 
-    #def __str__(self):
-     #   return "%s %d %d" % (self.typ, self.maxKandydatow, self.czasWyboru)
+    def __str__(self):
+        return "%s %d %d" % (self.typ, self.maxKandydatow, self.czasWyboru)
 
 
 class Kandydat(models.Model):

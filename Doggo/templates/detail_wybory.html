@@ -1,7 +1,8 @@
 <h1>{{ wybory.typ }}</h1>
 
 <ul>
-{% for choice in wybory.choice_set.all %}
-    <li>{{ choice.choice_text }}</li>
-{% endfor %}
+    {% for Kandydat in kandydat_list %}
+{#        <li><a href="/Doggo/kandydat/{{ Kandydat.id }}/">{{ Kandydat.imie }} {{ Kandydat.nazwisko }}</a></li>#}
+        <li><a href="{% url 'Doggo:detail' Kandydat.id %}">{{ Kandydat.imie }} {{ Kandydat.nazwisko}}</a></li>
+    {% endfor %}
 </ul>

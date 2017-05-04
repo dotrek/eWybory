@@ -31,5 +31,10 @@ def detail(request, kandydat_id):
 
 def detail_wybory(request, wybory_id):
     wybory = get_object_or_404(Wybory, pk=wybory_id)
-    return render_to_response('detail_wybory.html', {'wybory': wybory})
+    kandydat_list = Kandydat.objects.filter(wybory_id=wybory_id).order_by('nazwisko')[:5]
+    context = {
+        'wybory': wybory,
+        'kandydat_list': kandydat_list,
+    }
+    return render_to_response('detail_wybory.html', context)
 

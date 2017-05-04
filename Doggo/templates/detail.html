@@ -1,7 +1,20 @@
-<h1>{{ kandydat.imie }} {{ kandydat.nazwisko }}</h1>
-<h2>{{ kandydat.partia }}</h2>
-<ul>
+{#<h1>{{ kandydat.imie }} {{ kandydat.nazwisko }}</h1>#}
+{#<h2>{{ kandydat.partia }}</h2>#}
+{#<ul>#}
+{#{% for choice in kandydat.choice_set.all %}#}
+{#    <li>{{ choice.choice_text }}</li>#}
+{#{% endfor %}#}
+{#</ul>#}
+
+<h1>{{ wybory.typ }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'Doggo:vote' wybory.id %}" method="post">
+{% csrf_token %}
 {% for choice in kandydat.choice_set.all %}
-    <li>{{ choice.choice_text }}</li>
+    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
+    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br />
 {% endfor %}
-</ul>
+<input type="submit" value="Vote" />
+</form>

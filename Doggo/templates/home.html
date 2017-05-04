@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-    Wybory
+    <h1>Wybory</h1>
 {% if latest_question_list %}
 <ul>
     {% for Wybory in latest_question_list %}
-        <li><a href="/Doggo/{{ Wybory.id }}/">{{ Wybory.typ }}</a></li>
-{#        <li><a href="{% url 'Doggo:detail' kandydat.id %}">{{ Kandydat.imie }} {{ Kandydat.nazwisko}}</a></li>#}
+        <li><a href="/Doggo/wybory/{{ Wybory.id }}/">{{ Wybory.typ }}</a></li>
+{#        <li><a href="{% url 'Doggo:wybory' wyboryy.id %}">{{ Wybory.typ }}</a></li>#}
     {% endfor %}
 </ul>
 {% else %}

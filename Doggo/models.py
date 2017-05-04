@@ -23,6 +23,7 @@ class Wybory(models.Model):
 
 
 class Kandydat(models.Model):
+    id = models.AutoField(primary_key=True)
     imie = models.CharField(max_length=15)
     nazwisko = models.CharField(max_length=20)
     licznik = models.IntegerField(default=0)

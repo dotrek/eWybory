@@ -6,15 +6,3 @@
 {#{% endfor %}#}
 {#</ul>#}
 
-<h1>{{ wybory.typ }}</h1>
-
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-
-<form action="{% url 'Doggo:vote' wybory.id %}" method="post">
-{% csrf_token %}
-{% for choice in kandydat.choice_set.all %}
-    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
-    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br />
-{% endfor %}
-<input type="submit" value="Vote" />
-</form>

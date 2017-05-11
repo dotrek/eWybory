@@ -19,7 +19,7 @@ class Wybory(models.Model):
     __tablename__ = 'Wybory'
 
     def __str__(self):
-        return "%s %d %d" % (self.typ, self.maxKandydatow, self.czasWyboru)
+        return "%s" % (self.typ)
 
 
 class Kandydat(models.Model):
@@ -31,7 +31,7 @@ class Kandydat(models.Model):
     wybory = models.ForeignKey(Wybory, on_delete=models.CASCADE)
 
     def __str__(self):
-        return "%s %s %d" % (self.imie, self.nazwisko, self.licznik)
+        return "%s %s - %s" % (self.imie, self.nazwisko, self.partia)
 
 
 class Glosujacy(models.Model):

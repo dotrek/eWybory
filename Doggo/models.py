@@ -12,6 +12,7 @@ class Partia(models.Model):
 
 
 class Wybory(models.Model):
+    id = models.AutoField(primary_key=True)
     typ = models.CharField(max_length=10)
     maxKandydatow = models.IntegerField(default=0)
     czasWyboru = models.IntegerField(default=0)
@@ -44,3 +45,12 @@ class Glosujacy(models.Model):
 class Glos(models.Model):
     glosujacy = models.ForeignKey(Glosujacy, on_delete=models.CASCADE)
     wybory = models.ForeignKey(Wybory, on_delete=models.CASCADE)
+
+
+class Kandydowanie(models.Model):
+    kandydat = models.ForeignKey(Kandydat, on_delete=models.CASCADE)
+    wybory = models.ForeignKey(Wybory, on_delete=models.CASCADE)
+    __tablename__ = 'Kandydowanie'
+
+    def __str__(self):
+        return "%s %s w wyborach %s" % (self.kandydat.imie, self.kandydat.nazwisko, self.wybory.typ)

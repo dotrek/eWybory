@@ -1,6 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.urls import reverse
+from django.views import generic
 
 from .models import Kandydat, Wybory
 
@@ -8,19 +9,18 @@ from .models import Kandydat, Wybory
 # Create your views here
 
 
-def results(request, kandydat_id):
-    kandydat = get_object_or_404(Kandydat, pk=kandydat_id)
-    return render_to_response(request, 'results.html', { 'kandydat' : kandydat})
+class ResultsView(generic.DetailView):
+    model = Wybory
+    template_name = ''
 
 
 def vote(request, kandydat_id):
-
     try:
         selected_choice = get_object_or_404(Kandydat, pk=kandydat_id)
     except (KeyError, Kandydat.DoesNotExist):
         return render_to_response(request, 'detail_wybory.html', {
             'kandydat': selected_choice,
-            'error_message' : "Nie wybrałeś kandydata.",
+            'error_message': "Nie wybrałeś kandydata.",
         })
     else:
         selected_choice.licznik += 1
@@ -28,18 +28,17 @@ def vote(request, kandydat_id):
         return HttpResponseRedirect(reverse('Doggo:home'))
 
 
-def home(request):
-    latest_question_list = Wybory.objects.order_by('-typ')[:5]
-    context = {
-        'latest_question_list': latest_question_list,
-    }
-    # output = ', '.join([str(q.id) for q in latest_question_list])
-    return render_to_response('home.html', context)
+class HomeView(generic.ListView):
+    template_name = 'home.html'
+    context_object_name = 'latest_question_list'
+
+    def get_queryset(self):
+        return Wybory.objects.all()
 
 
-def detail(request, kandydat_id):
-    kandydat = get_object_or_404(Kandydat, pk=kandydat_id)
-    return render_to_response('detail.html', {'kandydat': kandydat})
+class DetailView(generic.DetailView):
+    model = Kandydat
+    template_name = 'detail.html'
 
 
 def detail_wybory(request, wybory_id):
@@ -50,4 +49,3 @@ def detail_wybory(request, wybory_id):
         'kandydat_list': kandydat_list,
     }
     return render_to_response('detail_wybory.html', context)
-

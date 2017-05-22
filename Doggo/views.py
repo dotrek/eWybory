@@ -14,9 +14,10 @@ class ResultsView(generic.DetailView):
     template_name = ''
 
 
-def vote(request, kandydat_id):
+def vote(request, wybory_id):
+    wybory = get_object_or_404(Wybory, pk=wybory_id)
     try:
-        selected_choice = get_object_or_404(Kandydat, pk=kandydat_id)
+        selected_choice = get_object_or_404(Kandydat, pk=request.POST['choice'])
     except (KeyError, Kandydat.DoesNotExist):
         return render_to_response(request, 'detail_wybory.html', {
             'kandydat': selected_choice,
@@ -25,7 +26,7 @@ def vote(request, kandydat_id):
     else:
         selected_choice.licznik += 1
         selected_choice.save()
-        return HttpResponseRedirect(reverse('Doggo:home'))
+        return HttpResponseRedirect(reverse('Doggo:results', args=(wybory.id,)))
 
 
 class HomeView(generic.ListView):
@@ -49,3 +50,12 @@ def detail_wybory(request, wybory_id):
         'kandydat_list': kandydat_list,
     }
     return render_to_response('detail_wybory.html', context)
+
+
+def results(request, wybory_id):
+    wybory = get_object_or_404(Wybory, pk=wybory_id)
+    kandydat_list = Kandydat.objects.filter(wybory_id=wybory_id).order_by('nazwisko')[:5]
+    context = {
+        'kandydat_list': kandydat_list,
+    }
+    return render_to_response(request, 'results.html', {'wybory': wybory}, context)

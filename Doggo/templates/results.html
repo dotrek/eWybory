@@ -1,7 +1,7 @@
 <h1>{{ wybory.typ }}</h1>
 
 <ul>
-    {% for choice in kandydat_list %}
+    {% for Kandydat in kandydat_list %}
     <li>{{ Kandydat.nazwisko }} -- {{ Kandydat.licznik }} vote{{ Kandydat.licznik|pluralize }}</li>
     {% endfor %}
 </ul>

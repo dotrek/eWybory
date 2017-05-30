@@ -1,3 +1,5 @@
+{% extends "base.html" %}
+{% block content %}
 <h1>{{ wybory.typ }}</h1>
 
 <ul>
@@ -5,3 +7,4 @@
     <li>{{ Kandydat.nazwisko }} -- {{ Kandydat.licznik }} vote{{ Kandydat.licznik|pluralize }}</li>
     {% endfor %}
 </ul>
+{% endblock %}

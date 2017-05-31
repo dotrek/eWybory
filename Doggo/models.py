@@ -1,6 +1,5 @@
 from django.db import models
 
-
 # Create your models here.
 class Partia(models.Model):
     nazwa = models.CharField(max_length=40)
@@ -36,13 +35,15 @@ class Kandydat(models.Model):
 
 
 class Glosujacy(models.Model):
-    pesel = models.PositiveIntegerField()
+    id = models.AutoField(primary_key=True)
+    pesel = models.BigIntegerField(11, unique=True)
 
     def __str__(self):
         return self.pesel
 
 
 class Glos(models.Model):
+    id = models.AutoField(primary_key=True)
     glosujacy = models.ForeignKey(Glosujacy, on_delete=models.CASCADE)
     wybory = models.ForeignKey(Wybory, on_delete=models.CASCADE)
 

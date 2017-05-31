@@ -1,15 +1,17 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>{{ wybory.typ }}</h2>
+    <h2>{{ wybory.typ }}</h2>
 
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-{% for choice in kandydat_list %}
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    {% for choice in kandydat_list %}
 
-<form action="{% url 'Doggo:vote' wybory.id %}" method="post">
-    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}"/>
-    <label for="choice{{ forloop.counter }}">{{ choice }}</label><br/>
-{% endfor %}
+        <form action="{% url 'Doggo:vote' wybory.id %}" method="post">
+        <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}"/>
+        <label for="choice{{ forloop.counter }}">{{ choice }}</label><br/>
+    {% endfor %}
+<label>Pesel*: </label>
+<input type="number" name="pesel" required="true"><br/>
 <input type="submit" value="Vote"/>
 </form>
 {% endblock %}

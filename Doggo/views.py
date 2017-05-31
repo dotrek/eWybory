@@ -1,9 +1,9 @@
 from django.http import HttpResponseRedirect
-from django.shortcuts import render_to_response, get_object_or_404
+from django.shortcuts import render_to_response, get_object_or_404, render
 from django.urls import reverse
 from django.views import generic
 
-from .models import Kandydat, Wybory, Glosujacy, Glos
+from .models import Kandydat, Wybory, Glos, Glosujacy
 
 
 # Create your views here
@@ -19,40 +19,32 @@ def vote(request, wybory_id):
     try:
 
         selected_choice = get_object_or_404(Kandydat, pk=request.POST['choice'])
-        user = Glosujacy.objects.filter(pesel=request.POST['pesel'])
-        if user.exists():
-            glos = Glos.objects.filter(wybory=wybory, glosujacy=user)
-            if glos.exists():
-                return render_to_response(request, 'detail_wybory.html', {
-                    'error_message': "Ta osoba juz glosowala w tych wyborach"
-                })
-            else:
-                glos.wybory = wybory
-                glos.glosujacy = user
-                glos.save()
-                selected_choice.licznik += 1
-                selected_choice.save()
-                return HttpResponseRedirect(reverse('Doggo:results', args=(wybory.id,)))
-        else:
-            return render_to_response(request, 'detail_wybory.html', {
-                'error_message': "Pesel nie znajduje sie w bazie glosujacych"
-            })
-    except (KeyError, Kandydat.DoesNotExist):
-        return render_to_response(request, 'detail_wybory.html', {
+        user = Glosujacy.objects.get(pesel=request.POST['pesel'])
+    except (UnboundLocalError, Kandydat.DoesNotExist):
+        return render(request, 'detail_wybory.html', {
             'kandydat': selected_choice,
             'error_message': "Nie wybrales kandydata.",
         })
-    # except user.DoesNotExist:
-    #     return render_to_response(request, 'detail_wybory.html', {
-    #         'error_message': "Pesel nie znajduje sie w bazie glosujacych"
-    #     })
-    # else:
-    #     glos.wybory = wybory
-    #     glos.glosujacy = user
-    #     glos.save()
-    #     selected_choice.licznik += 1
-    #     selected_choice.save()
-    #     return HttpResponseRedirect(reverse('Doggo:results', args=(wybory.id,)))
+    except (UnboundLocalError, Glosujacy.DoesNotExist):
+        return render(request, 'detail_wybory.html', {
+            'kandydat':selected_choice,
+            'error_message': "Pesel nie znajduje sie w bazie glosujacych"
+        })
+    else:
+        try:
+            query = Glos.objects.filter(wybory=wybory)
+            glos = get_object_or_404(query, glosujacy=user)
+        except glos.DoesNotExist:
+            glos.wybory = wybory
+            glos.glosujacy = user
+            glos.save()
+            selected_choice.licznik += 1
+            selected_choice.save()
+            return HttpResponseRedirect(reverse('Doggo:results', args=(wybory.id,)))
+        else:
+            return render(request, 'detail_wybory.html', {
+                'error_message': "Ta osoba juz glosowala w tych wyborach"
+            })
 
 
 class HomeView(generic.ListView):

@@ -16,20 +16,18 @@ class ResultsView(generic.DetailView):
 
 def vote(request, wybory_id):
     wybory = get_object_or_404(Wybory, pk=wybory_id)
+    kandydat_list = Kandydat.objects.filter(wybory_id=wybory_id).order_by('nazwisko')[:5]
+    context = {
+        'error_message': "Pesel nie znajduje sie w bazie glosujacych",
+    }
     try:
 
         selected_choice = get_object_or_404(Kandydat, pk=request.POST['choice'])
         user = Glosujacy.objects.get(pesel=request.POST['pesel'])
-    except (UnboundLocalError, Kandydat.DoesNotExist):
-        return render(request, 'detail_wybory.html', {
-            'kandydat': selected_choice,
-            'error_message': "Nie wybrales kandydata.",
-        })
+    except (KeyError, Kandydat.DoesNotExist):
+        return render(request, 'detail_wybory.html',context)
     except (UnboundLocalError, Glosujacy.DoesNotExist):
-        return render(request, 'detail_wybory.html', {
-            'kandydat':selected_choice,
-            'error_message': "Pesel nie znajduje sie w bazie glosujacych"
-        })
+        return render(request, 'detail_wybory.html',context)
     else:
         try:
             query = Glos.objects.filter(wybory=wybory)
@@ -43,7 +41,7 @@ def vote(request, wybory_id):
             return HttpResponseRedirect(reverse('Doggo:results', args=(wybory.id,)))
         else:
             return render(request, 'detail_wybory.html', {
-                'error_message': "Ta osoba juz glosowala w tych wyborach"
+            'error_message': "Ta osoba juz glosowala w tych wyborach"
             })
 
 

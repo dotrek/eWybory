@@ -39,7 +39,7 @@ class Glosujacy(models.Model):
     pesel = models.BigIntegerField(11, unique=True)
 
     def __str__(self):
-        return self.pesel
+        return "%d" %self.pesel
 
 
 class Glos(models.Model):

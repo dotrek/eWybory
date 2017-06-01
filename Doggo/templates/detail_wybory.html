@@ -7,9 +7,13 @@
     {% for choice in kandydat_list %}
 
         <form action="{% url 'Doggo:vote' wybory.id %}" method="post">
+        <label class="btn btn-outline-primary">
         <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}"/>
-        <label for="choice{{ forloop.counter }}">{{ choice }}</label><br/>
+        <label for="choice{{ forloop.counter }}">{{ choice }}</label>
+        </label>
+        <br/>
     {% endfor %}
+    <br>
 <label>Pesel*: </label>
 <input type="number" name="pesel" required="true"><br/>
 <input type="submit" value="Vote"/>

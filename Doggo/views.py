@@ -25,9 +25,9 @@ def vote(request, wybory_id):
         selected_choice = get_object_or_404(Kandydat, pk=request.POST['choice'])
         user = Glosujacy.objects.get(pesel=request.POST['pesel'])
     except (KeyError, Kandydat.DoesNotExist):
-        return render(request, 'detail_wybory.html',context)
+        return render(request, 'detail_wybory.html', context)
     except (UnboundLocalError, Glosujacy.DoesNotExist):
-        return render(request, 'detail_wybory.html',context)
+        return render(request, 'detail_wybory.html', context)
     else:
         try:
             query = Glos.objects.filter(wybory=wybory)
@@ -41,7 +41,7 @@ def vote(request, wybory_id):
             return HttpResponseRedirect(reverse('Doggo:results', args=(wybory.id,)))
         else:
             return render(request, 'detail_wybory.html', {
-            'error_message': "Ta osoba juz glosowala w tych wyborach"
+                'error_message': "Ta osoba juz glosowala w tych wyborach"
             })
 
 
@@ -55,7 +55,7 @@ class HomeView(generic.ListView):
 
 class DetailView(generic.DetailView):
     model = Kandydat
-    template_name = 'detail.html'
+    template_name = 'creators.html'
 
 
 def detail_wybory(request, wybory_id):
@@ -76,3 +76,9 @@ def results(request, wybory_id):
         'kandydat_list': kandydat_list,
     }
     return render_to_response('results.html', context)
+
+
+def creatorsview(request):
+    creators = {"Marek Jakubowski", "Piotr Otapowicz", "Karol Wojciula"}
+    context = {'creators': creators}
+    return render_to_response("creators.html", context)

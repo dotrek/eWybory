@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+<ul>
+ {% for mozejamozety in creators %}
+        <h1><li>{{ mozejamozety }}</li></h1><br>
+    {% endfor %}
+</ul>
+{% endblock %}

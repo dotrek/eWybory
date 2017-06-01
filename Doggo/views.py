@@ -63,14 +63,9 @@ class DetailView(generic.DetailView):
 def detail_wybory(request, wybory_id):
     wybory = get_object_or_404(Wybory, pk=wybory_id)
     kandydat_list = Kandydat.objects.filter(wybory_id=wybory_id).order_by('nazwisko')[:5]
-    liczba_dopuszczonych = Glosujacy.objects.all().count()
-    liczba_glosujacych = Glos.objects.filter(wybory=wybory).count()
-    frekwencja = liczba_glosujacych / liczba_dopuszczonych
-
     context = {
         'wybory': wybory,
         'kandydat_list': kandydat_list,
-        'frekwencja': frekwencja
     }
     return render_to_response('detail_wybory.html', context)
 

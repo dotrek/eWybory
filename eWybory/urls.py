@@ -21,6 +21,5 @@ from Doggo import views
 urlpatterns = [
     url(r'^$', views.HomeView.as_view(), name='home'),
     url(r'^Doggo/', include('Doggo.urls')),
-    url(r'^captcha/', include('captcha.urls')),
     url(r'^admin/', admin.site.urls),
 ]

@@ -1,18 +1,10 @@
 import datetime
-
-from captcha.fields import CaptchaField
 from django import forms
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404, render
 from django.urls import reverse
 from django.views import generic
-
 from .models import Kandydat, Wybory, Glos, Glosujacy
-
-
-class CaptchaTestForm(forms.Form):
-    captcha = CaptchaField()
-
 
 # Create your views here
 
@@ -24,7 +16,7 @@ class ResultsView(generic.DetailView):
 
 def vote(request, wybory_id):
     wybory = get_object_or_404(Wybory, pk=wybory_id)
-    kandydat_list = Kandydat.objects.filter(wybory_id=wybory_id).order_by('nazwisko')[:5]
+    kandydat_list = Kandydat.objects.filter(wybory_id=wybory_id).order_by('nazwisko')
     try:
         selected_choice = get_object_or_404(Kandydat, pk=request.POST['choice'])
         user = Glosujacy.objects.get(pesel=request.POST['pesel'])
@@ -63,7 +55,7 @@ class HomeView(generic.ListView):
             start_time__gte=datetime.date.today()
         ).filter(
             end_time__gte=datetime.date.today()
-        )
+        ).order_by('end_time')
 
 
 class UpcomingView(generic.ListView):
@@ -73,7 +65,7 @@ class UpcomingView(generic.ListView):
     def get_queryset(self):
         return Wybory.objects.filter(
             start_time__gte=datetime.date.today()
-        )
+        ).order_by('start_time')
 
 
 class PreviousView(generic.ListView):
@@ -83,7 +75,7 @@ class PreviousView(generic.ListView):
     def get_queryset(self):
         return Wybory.objects.filter(
             end_time__lt=datetime.date.today()
-        )
+        ).order_by('end_time')
 
 
 class DetailView(generic.DetailView):
@@ -93,7 +85,7 @@ class DetailView(generic.DetailView):
 
 def detail_wybory(request, wybory_id):
     wybory = get_object_or_404(Wybory, pk=wybory_id)
-    kandydat_list = Kandydat.objects.filter(wybory_id=wybory_id).order_by('nazwisko')[:5]
+    kandydat_list = Kandydat.objects.filter(wybory_id=wybory_id).order_by('nazwisko')
     context = {
         'wybory': wybory,
         'kandydat_list': kandydat_list,
@@ -106,7 +98,7 @@ def introView(request):
 
 def results(request, wybory_id):
     wybory = get_object_or_404(Wybory, pk=wybory_id)
-    kandydat_list = Kandydat.objects.filter(wybory_id=wybory_id).order_by('nazwisko')[:5]
+    kandydat_list = Kandydat.objects.filter(wybory_id=wybory_id).order_by('nazwisko')
     liczba_dopuszczonych = Glosujacy.objects.all().count()
     liczba_glosujacych = Glos.objects.filter(wybory_id=wybory_id).count()
     frekwencja = liczba_glosujacych / liczba_dopuszczonych * 100

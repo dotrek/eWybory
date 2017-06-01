@@ -12,7 +12,7 @@ class Partia(models.Model):
 
 class Wybory(models.Model):
     id = models.AutoField(primary_key=True)
-    typ = models.CharField(max_length=10)
+    typ = models.CharField(max_length=30)
     start_time = models.DateField()
     end_time = models.DateField()
     maxKandydatow = models.IntegerField(default=0)

@@ -24,7 +24,7 @@ SECRET_KEY = 'x0kz+ei&he0v$&w8sx4g26n20w@s8t11^vs^fn&v6v2_#ho2jg'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'mestowaty.pythonanywhere.com']
 
 # Application definition
 
@@ -35,8 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'captcha'
+    'django.contrib.staticfiles'
 ]
 
 MIDDLEWARE = [
@@ -74,8 +73,12 @@ WSGI_APPLICATION = 'eWybory.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'justDatabase'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'mestowaty$szkielety',
+        'USER': 'mestowaty',
+        'PASSWORD': 'asdasdasd',
+        'HOST': 'mestowaty.mysql.pythonanywhere-services.com',   # Or an IP Address that your DB is hosted on
+        'PORT': '3306',
     }
 }
 

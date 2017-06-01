@@ -4,7 +4,7 @@
 {% if upcoming_list %}
 <ul>
     {% for Wybory in upcoming_list %}
-         <font size="5" color="#428bca"><li>{{ Wybory.typ }} -  w dniach: {{ Wybory.start_time }} - {{ Wybory.end_time }}</li></font>
+         <font size="5" color="#428bca">{{ Wybory.typ }} -  w dniach: {{ Wybory.start_time }} - {{ Wybory.end_time }}</br></font>
     {% endfor %}
 </ul>
 {% else %}

@@ -4,8 +4,8 @@
 {% if previous_list %}
 <ul>
     {% for Wybory in previous_list %}
-        <font size="5"><li><a href="/Doggo/{{ Wybory.id }}/results/">{{ Wybory.typ }} - otwarte do {{ Wybory.end_time }}</a></li>
-{#        <li><a href="{% url 'Doggo:results' wybory.id %}">{{ Wybory.typ }} ({{ Wybory.start_time }}-{{ Wybory.end_time }}</a></li></font>#}
+        <font size="5"><a href="/Doggo/{{ Wybory.id }}/results/">{{ Wybory.typ }} - otwarte do {{ Wybory.end_time }}</a></br></font>
+{#        <a href="{% url 'Doggo:results' wybory.id %}">{{ Wybory.typ }} ({{ Wybory.start_time }}-{{ Wybory.end_time }}</a></br></font>#}
     {% endfor %}
 </ul>
 {% else %}

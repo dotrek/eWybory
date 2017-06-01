@@ -10,4 +10,5 @@ urlpatterns = [
     url(r'^kandydat/(?P<pk>[0-9]+)/$', views.DetailView.as_view(), name='detail'),
     url(r'^(?P<wybory_id>[0-9]+)/results/$', views.results, name='results'),
     url(r'^wybory/(?P<wybory_id>[0-9]+)/vote/$', views.vote, name='vote'),
+    url(r'^tworcy', views.creatorsview, name='creators')
 ]

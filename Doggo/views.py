@@ -82,3 +82,7 @@ def results(request, wybory_id):
         'frekwencja': frekwencja
     }
     return render_to_response('results.html', context)
+def creatorsview(request):
+    creators = {"Marek Jakubowski", "Piotr Otapowicz", "Karol Wojciula"}
+    context = {'creators': creators}
+    return render_to_response("creators.html", context)

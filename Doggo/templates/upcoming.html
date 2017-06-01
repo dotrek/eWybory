@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if upcoming_list %}
+<ul>
+    {% for Wybory in upcoming_list %}
+        <li>{{ Wybory.typ }} -  w dniach: {{ Wybory.start_time }} - {{ Wybory.end_time }}</li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No polls are available.</p>
+{% endif %}
+{% endblock %}

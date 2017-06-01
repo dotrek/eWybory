@@ -4,7 +4,7 @@
 {% if latest_question_list %}
 <ul>
     {% for Wybory in latest_question_list %}
-        <li><a href="/Doggo/wybory/{{ Wybory.id }}/">{{ Wybory.typ }}</a></li>
+        <li><a href="/Doggo/wybory/{{ Wybory.id }}/">{{ Wybory.typ }} - otwarte do {{ Wybory.end_time }}</a></li>
 {#        <li><a href="{% url 'Doggo:wybory' wyboryy.id %}">{{ Wybory.typ }}</a></li>#}
     {% endfor %}
 </ul>

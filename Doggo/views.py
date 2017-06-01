@@ -1,3 +1,4 @@
+import datetime
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404, render
 from django.urls import reverse
@@ -52,7 +53,21 @@ class HomeView(generic.ListView):
     context_object_name = 'latest_question_list'
 
     def get_queryset(self):
-        return Wybory.objects.all()
+        return Wybory.objects.exclude(
+            start_time__gte=datetime.date.today()
+        ).filter(
+            end_time__gte=datetime.date.today()
+        )
+
+
+class UpcomingView(generic.ListView):
+    template_name = 'upcoming.html'
+    context_object_name = 'upcoming_list'
+
+    def get_queryset(self):
+        return Wybory.objects.filter(
+            start_time__gte=datetime.date.today()
+        )
 
 
 class DetailView(generic.DetailView):
@@ -82,6 +97,8 @@ def results(request, wybory_id):
         'frekwencja': frekwencja
     }
     return render_to_response('results.html', context)
+
+
 def creatorsview(request):
     creators = {"Marek Jakubowski", "Piotr Otapowicz", "Karol Wojciula"}
     context = {'creators': creators}

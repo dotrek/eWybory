@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d0c72e6b-4b93-403b-a98a-67ae32f16be6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/images/addonimage.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Doggo/templates/detail.html" afterPath="$PROJECT_DIR$/Doggo/templates/creators.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Doggo/templates/base.html" afterPath="$PROJECT_DIR$/Doggo/templates/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Doggo/templates/detail_wybory.html" afterPath="$PROJECT_DIR$/Doggo/templates/detail_wybory.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Doggo/urls.py" afterPath="$PROJECT_DIR$/Doggo/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Doggo/views.py" afterPath="$PROJECT_DIR$/Doggo/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/eWybory/settings.py" afterPath="$PROJECT_DIR$/eWybory/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/bootstrap/css/simple-sidebar.css" afterPath="$PROJECT_DIR$/static/bootstrap/css/simple-sidebar.css" />
-    </list>
+    <list default="true" id="d0c72e6b-4b93-403b-a98a-67ae32f16be6" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -48,7 +38,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Doggo/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="291">
@@ -70,16 +60,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="creators.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Doggo/templates/creators.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="44" lean-forward="false" selection-start-line="5" selection-start-column="44" selection-end-line="5" selection-end-column="44" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="detail_wybory.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Doggo/templates/detail_wybory.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -94,7 +74,7 @@
         <entry file="file://$PROJECT_DIR$/Doggo/templates/home.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
-              <caret line="8" column="16" lean-forward="true" selection-start-line="5" selection-start-column="3" selection-end-line="8" selection-end-column="16" />
+              <caret line="8" column="16" lean-forward="false" selection-start-line="5" selection-start-column="3" selection-end-line="8" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -751,9 +731,9 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3281493" sideWeight="0.49029127" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32659408" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32649842" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32649842" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329653" sideWeight="0.49676377" order="17" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.329653" sideWeight="0.49676377" order="17" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1119,7 +1099,7 @@
     <entry file="file://$PROJECT_DIR$/Doggo/templates/home.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
-          <caret line="8" column="16" lean-forward="true" selection-start-line="5" selection-start-column="3" selection-end-line="8" selection-end-column="16" />
+          <caret line="8" column="16" lean-forward="false" selection-start-line="5" selection-start-column="3" selection-end-line="8" selection-end-column="16" />
           <folding />
         </state>
       </provider>
@@ -1132,13 +1112,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Doggo/views.py">
+    <entry file="file://$PROJECT_DIR$/Doggo/templates/creators.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="83" column="54" lean-forward="false" selection-start-line="83" selection-start-column="54" selection-end-line="83" selection-end-column="54" />
-          <folding>
-            <element signature="e#0#44#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="85">
+          <caret line="5" column="44" lean-forward="false" selection-start-line="5" selection-start-column="44" selection-end-line="5" selection-end-column="44" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1150,11 +1128,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Doggo/templates/creators.html">
+    <entry file="file://$PROJECT_DIR$/Doggo/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="44" lean-forward="false" selection-start-line="5" selection-start-column="44" selection-end-line="5" selection-end-column="44" />
-          <folding />
+        <state relative-caret-position="291">
+          <caret line="83" column="54" lean-forward="false" selection-start-line="83" selection-start-column="54" selection-end-line="83" selection-end-column="54" />
+          <folding>
+            <element signature="e#0#44#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

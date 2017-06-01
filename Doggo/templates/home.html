@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-{% if latest_question_list %}
+{% if home_list %}
 <ul>
-    {% for Wybory in latest_question_list %}
+    {% for Wybory in home_list %}
         <li><a href="/Doggo/wybory/{{ Wybory.id }}/">{{ Wybory.typ }} - otwarte do {{ Wybory.end_time }}</a></li>
 {#        <li><a href="{% url 'Doggo:wybory' wyboryy.id %}">{{ Wybory.typ }}</a></li>#}
     {% endfor %}
 </ul>
 {% else %}
-<p>No polls are available.</p>
+<p>Brak otwartych wyborów.</p>
 {% endif %}
 {% endblock %}

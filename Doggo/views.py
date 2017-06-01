@@ -33,7 +33,7 @@ def vote(request, wybory_id):
             glos.save()
             selected_choice.licznik += 1
             selected_choice.save()
-            return HttpResponseRedirect(reverse('Doggo:results', args=(wybory.id,)))
+            return HttpResponseRedirect(reverse('Doggo:home'))
         else:
             return render(request, 'detail_wybory.html', {
                 'wybory': wybory,
@@ -50,7 +50,7 @@ def vote(request, wybory_id):
 
 class HomeView(generic.ListView):
     template_name = 'home.html'
-    context_object_name = 'latest_question_list'
+    context_object_name = 'home_list'
 
     def get_queryset(self):
         return Wybory.objects.exclude(
@@ -67,6 +67,16 @@ class UpcomingView(generic.ListView):
     def get_queryset(self):
         return Wybory.objects.filter(
             start_time__gte=datetime.date.today()
+        )
+
+
+class PreviousView(generic.ListView):
+    template_name = 'previous.html'
+    context_object_name = 'previous_list'
+
+    def get_queryset(self):
+        return Wybory.objects.filter(
+            end_time__lt=datetime.date.today()
         )
 
 

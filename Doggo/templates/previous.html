@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if previous_list %}
+<ul>
+    {% for Wybory in previous_list %}
+        <li><a href="/Doggo/{{ Wybory.id }}/results/">{{ Wybory.typ }} - otwarte do {{ Wybory.end_time }}</a></li>
+{#        <li><a href="{% url 'Doggo:results' wybory.id %}">{{ Wybory.typ }} ({{ Wybory.start_time }}-{{ Wybory.end_time }}</a></li>#}
+    {% endfor %}
+</ul>
+{% else %}
+<p>Brak historii wyborów.</p>
+{% endif %}
+{% endblock %}

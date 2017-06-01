@@ -49,6 +49,9 @@ class Glos(models.Model):
     glosujacy = models.ForeignKey(Glosujacy, on_delete=models.CASCADE)
     wybory = models.ForeignKey(Wybory, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return "%s %s" % (self.wybory, self.glosujacy)
+
 
 class Kandydowanie(models.Model):
     kandydat = models.ForeignKey(Kandydat, on_delete=models.CASCADE)

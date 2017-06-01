@@ -4,8 +4,8 @@
 
 <ul>
     {% for Kandydat in kandydat_list %}
-    <li>{{ Kandydat.nazwisko }} -- {{ Kandydat.licznik }} vote{{ Kandydat.licznik|pluralize }}</li>
+    <li>{{ Kandydat.nazwisko }} -- {{ Kandydat.licznik }} vote{{ Kandydat.licznik|pluralize }} </li>
     {% endfor %}
 </ul>
-<p>Aktualna frekwencja wynosi: <strong>{{ frekwencja }}%</strong></p>
+<p>Frekwencja wyniosla: <strong>{{ frekwencja }}%</strong></p>
 {% endblock %}

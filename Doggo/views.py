@@ -1,10 +1,17 @@
 import datetime
+
+from captcha.fields import CaptchaField
+from django import forms
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404, render
 from django.urls import reverse
 from django.views import generic
 
 from .models import Kandydat, Wybory, Glos, Glosujacy
+
+
+class CaptchaTestForm(forms.Form):
+    captcha = CaptchaField()
 
 
 # Create your views here
@@ -21,7 +28,6 @@ def vote(request, wybory_id):
     try:
         selected_choice = get_object_or_404(Kandydat, pk=request.POST['choice'])
         user = Glosujacy.objects.get(pesel=request.POST['pesel'])
-
         glos = Glos.objects.filter(
             wybory__exact=wybory
         ).filter(
@@ -95,6 +101,9 @@ def detail_wybory(request, wybory_id):
     return render_to_response('detail_wybory.html', context)
 
 
+def introView(request):
+    return render_to_response('intro.html')
+
 def results(request, wybory_id):
     wybory = get_object_or_404(Wybory, pk=wybory_id)
     kandydat_list = Kandydat.objects.filter(wybory_id=wybory_id).order_by('nazwisko')[:5]
@@ -104,7 +113,7 @@ def results(request, wybory_id):
     context = {
         'wybory': wybory,
         'kandydat_list': kandydat_list,
-        'frekwencja': frekwencja
+        'frekwencja': frekwencja,
     }
     return render_to_response('results.html', context)
 

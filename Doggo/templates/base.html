@@ -35,36 +35,34 @@
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
             <li class="sidebar-brand">
-                <a href="{%url 'Doggo:home' %}">
+                <a href="{% url 'Doggo:intro' %}">
                     eWybory
                 </a>
             </li>
             <li>
-                <a href="{%url 'Doggo:home' %}">Aktualne wybory</a>
+                <a href="{% url 'Doggo:home' %}">Aktualne wybory</a>
             </li>
             <li>
-                <a href="{%url 'Doggo:upcoming' %}">Nadchodzace wybory</a>
+                <a href="{% url 'Doggo:upcoming' %}">Nadchodzace wybory</a>
             </li>
             <li>
-                <a href="{%url 'Doggo:previous' %}">Wyniki zakonczonych wyborow</a>
+                <a href="{% url 'Doggo:previous' %}">Wyniki zakonczonych wyborow</a>
             </li>
             <li>
                 <a href="{% url 'Doggo:creators' %}">Tworcy</a>
             </li>
-            <img src="{% static 'images/addonimage.jpg' %}" align="center">
-        </ul>
+            <img src="{% static 'images/addonimage.jpg' %}" class="stretch" align="center">
 
     </div>
     <!-- /#sidebar-wrapper -->
 
     <!-- Page Content -->
     <div id="page-content-wrapper">
+        <a href="#menu-toggle" class="btn btn-info btn-block" id="menu-toggle">Menu</a>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-12">
-                    <a href="#menu-toggle" class="btn btn-info btn-block" id="menu-toggle">Menu</a>
+                <div class="col-lg-12" style="text-align: center">
                     {% block content %}
-
                     {% endblock %}
                 </div>
             </div>
